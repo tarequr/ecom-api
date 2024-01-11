@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthenticationController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v2'], function () {
     Route::post('/login', [AuthenticationController::class, 'login']);
+});
+
+
+Route::group(['prefix' => 'v2', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/me', [UserController::class, 'loggedInfo']);
 });
