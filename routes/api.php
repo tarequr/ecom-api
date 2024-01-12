@@ -27,5 +27,5 @@ Route::group(['prefix' => 'v2'], function () {
 
 Route::group(['prefix' => 'v2', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/me', [UserController::class, 'loggedInfo']);
-    Route::get('/users', [UserController::class, 'userList'])->middleware('auth.permission');
+    Route::get('/users', [UserController::class, 'userList'])->middleware('auth.permission','users.list');
 });
