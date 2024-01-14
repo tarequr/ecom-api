@@ -14,31 +14,33 @@ class CategoryController extends Controller
 
     public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->category = $categoryRepository ;
+        $this->category = $categoryRepository;
     }
 
-    public function index(){
-
+    public function index()
+    {
         $data =  $this->category->all();
         return CategoryResource::collection($data);
     }
 
-    public function create(CategoryRequest $request){
-
+    public function create(CategoryRequest $request)
+    {
         return  $this->category->create($request->validated());
     }
 
-    public function find($id){
+    public function find($id)
+    {
         $item = $this->category->find($id);
         return new CategoryResource($item);
     }
 
-    public function update(CategoryRequest $request, $id){
-        return  $this->category->update($request->validated(),$id);
-
+    public function update(CategoryRequest $request, $id)
+    {
+        return  $this->category->update($request->validated(), $id);
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         return $this->category->destroy($id);
     }
 }
