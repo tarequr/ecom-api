@@ -15,26 +15,26 @@ class CategoryRepository implements CategoryInterface
 
     public function all()
     {
-        $this->category->all();
+        return $this->category->all();
     }
 
     public function find($id)
     {
-        $this->category->find($id);
+        return $this->category->find($id);
     }
 
     public function create(array $data)
     {
-        $this->category->create($data);
+        return $this->category->create($data);
     }
 
     public function update(array $data, $id)
     {
-        $this->category->find($id)->update($data);
+        return $this->category->find($id)->update($data);
     }
 
     public function destroy($id)
     {
-        $this->category->find($id)->destroy();
+        return $this->category->find($id)->destroy();
     }
 }
