@@ -25,9 +25,10 @@ class RoleRepository implements RoleInterface
 
     public function create(array $data, $permissions)
     {
-        $currentRole = $this->role->create($data);
-        $currentRole->permissions()->sync($permissions);
-        return true;
+        return $this->role->create($data)->permissions()->sync(
+                    $permissions,
+                    ['name' => 'demo name']
+                );
     }
 
     public function update(array $data, $id)

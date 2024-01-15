@@ -25,8 +25,6 @@ class RoleController extends Controller
 
     public function create(RoleRequest $request)
     {
-        // return  $request->input('permissions');
-        // return  $request->validated();
         return  $this->role->create($request->validated(),$request->input('permissions'));
     }
 
