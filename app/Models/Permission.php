@@ -10,4 +10,9 @@ class Permission extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withPivot(['name']); ;
+    }
 }
